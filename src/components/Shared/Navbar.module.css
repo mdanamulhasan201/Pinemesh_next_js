@@ -15,7 +15,6 @@
   margin: 0 auto;
   position: relative;
   flex-wrap: wrap;
-  font-size: 16px;
 }
 
 /* Logo */
@@ -26,14 +25,23 @@
   margin-right: auto;
 }
 
+.logo a {
+   
+  color: #000000;      
+}
+
+
 /* Navigation Links */
 .navLinks {
   display: flex;
   gap: 20px;
   flex: 1;
   justify-content: center;
+  
 }
-
+.fnt{
+  font-size: 18px;
+}
 .navLinks a,
 .navLinks .dropbtn {
   color: #333;
@@ -43,7 +51,6 @@
   background-color: transparent;
   border: none;
   display: flex;
-  font-size: 16px;
   align-items: center;
   gap: 5px;
   transition: background-color 0.3s ease, color 0.3s ease; 
@@ -60,6 +67,9 @@
 .dropdown {
   position: relative;
 }
+.dropdown button{
+  font-size: 16px;
+}
 
 /* Dropdown Content */
 .dropdownContent {
@@ -67,7 +77,6 @@
   position: absolute;
   top: 100%;
   left: 0;
-  top: 50px;
   background-color: #287279;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   min-width: 150px;
@@ -83,7 +92,6 @@
   color: white;
   padding: 10px;
   text-decoration: none;
-  font-size: 15px;
   display: block;
 }
 
@@ -125,6 +133,7 @@
 .cart{
   width: 28px;
   height: 25px;
+  cursor: pointer;
 }
 
 /* Mobile Menu Button */
@@ -189,6 +198,13 @@
   text-align: left;
 }
 
+.sidebarContent button{
+  font-size: 16px;
+}
+.sidebarContent Link{
+  font-size: 16px;
+}
+
 .sidebarContent a:last-child,
 .mobileDropdownContent a:last-child {
   border-bottom: none;
@@ -237,7 +253,7 @@
 .mobileDropbtn:hover {
   background-color: #f0f0f0; 
 }
-/* Responsive Styles */
+/* Responsive Styles navbar*/
 @media (max-width: 768px) {
   .navLinks {
     display: none;
