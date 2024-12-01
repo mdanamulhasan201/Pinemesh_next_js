@@ -1,0 +1,220 @@
+.bg {
+  background-color: #FFFFFF;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  z-index: 1000;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+
+.navLinks a,
+.navLinks .dropbtn {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navLinks a:hover,
+.navLinks .dropbtn:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #444;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.dropdownContent a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownContent a:hover {
+  background-color: #666;
+}
+
+.dropdown:hover .dropdownContent,
+.dropdownContent.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Actions (Right Side) */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+/* Login and Cart Buttons */
+.actions button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.actions button:hover {
+  background-color: #555;
+}
+
+/* Mobile Menu Button */
+.mobileMenuBtn {
+  display: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  margin-right: 20px;
+}
+
+/* Sidebar for Mobile */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.showSidebar {
+  left: 0;
+}
+.marinTop {
+  margin-top: 60px;
+}
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarContent a,
+.mobileDropdownContent a {
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.sidebarContent a:last-child,
+.mobileDropdownContent a:last-child {
+  border-bottom: none;
+}
+
+.sidebarContent a:hover,
+.mobileDropdownContent a:hover {
+  background-color: #555;
+}
+
+.mobileDropdownContent {
+  display: none;
+  flex-direction: column;
+  background-color: #333;
+}
+
+.mobileDropdownContent.show {
+  display: flex;
+}
+
+/* Ensure dropdown buttons match other links */
+.mobileDropdown {
+  padding: 0;
+}
+
+.mobileDropbtn {
+  color: white;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  padding: 15px 20px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileDropbtn:hover {
+  background-color: #555;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: block;
+  }
+
+  .actions {
+    justify-content: center;
+    flex: 1;
+  }
+}
