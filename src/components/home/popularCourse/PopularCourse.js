@@ -1,5 +1,6 @@
 "use client";
 
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import styles from "./Popular.module.css";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import bannerImg1 from "../../../../public/popular_course/image_1.png";
@@ -12,6 +13,34 @@ import teacherImg3 from "../../../../public/popular_course/teacher/image_3.png";
 import teacherImg4 from "../../../../public/popular_course/teacher/image_4.png";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { MdCheckCircle, MdTimer } from "react-icons/md";
+import { PiBookOpenTextBold } from "react-icons/pi";
+
+const RatingStars = ({ rating }) => {
+  const fullStars = Math.floor(rating);
+  const halfStars = rating % 1 >= 0.5 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStars;
+
+  return (
+    <div className={styles.stars}>
+      {Array(fullStars)
+        .fill(<FaStar className={styles.starFull} />)
+        .map((star, index) => (
+          <div key={`full-${index}`}>{star}</div>
+        ))}
+      {Array(halfStars)
+        .fill(<FaStarHalfAlt className={styles.starHalf} />)
+        .map((star, index) => (
+          <div key={`half-${index}`}>{star}</div>
+        ))}
+      {Array(emptyStars)
+        .fill(<FaStar className={styles.starEmpty} />)
+        .map((star, index) => (
+          <div key={`empty-${index}`}>{star}</div>
+        ))}
+    </div>
+  );
+};
 
 const data = [
   {
@@ -62,8 +91,8 @@ const data = [
     image: bannerImg4,
     type: "Beginner",
     health: "Nutrition and Diet",
-    title: "Introduction to healthy Diet and Nutrition",
-    rating: 4.9,
+    title: "Introduction to Healthy Diet and Nutrition",
+    rating: 3.9,
     reviewCount: 566,
     time: "6h 34m",
     lessons: 3,
@@ -71,92 +100,29 @@ const data = [
     teacherImg: teacherImg4,
     price: 100,
   },
-  {
-    id: 5,
-    image: bannerImg1,
-    type: "beginner",
-    health: "Nutrition and Diet",
-    title: "Yoga for Beginners",
-    rating: 4.8,
-    reviewCount: 320,
-    time: "5h 00m",
-    lessons: 5,
-    teacher: "John Doe",
-    teacherImg: teacherImg1,
-    price: 45,
-  },
-  {
-    id: 6,
-    image: bannerImg2,
-    type: "intermediate",
-    health: "Health and Wellness",
-    title: "Meditation for Mental Clarity",
-    rating: 4.7,
-    reviewCount: 210,
-    time: "4h 30m",
-    lessons: 4,
-    teacher: "Jane Smith",
-    teacherImg: teacherImg2,
-    price: 60,
-  },
-  {
-    id: 7,
-    image: bannerImg3,
-    type: "beginner",
-    health: "Nutrition and Diet",
-    title: "Healthy Living: A Beginner's Guide",
-    rating: 4.6,
-    reviewCount: 320,
-    time: "5h 30m",
-    lessons: 6,
-    teacher: "Sam Brown",
-    teacherImg: teacherImg3,
-    price: 55,
-  },
-  {
-    id: 8,
-    image: bannerImg4,
-    type: "Beginner",
-    health: "Nutrition and Diet",
-    title: "Introduction to Healthy Diet and Nutrition",
-    rating: 4.9,
-    reviewCount: 500,
-    time: "6h 00m",
-    lessons: 4,
-    teacher: "Kate Winslate",
-    teacherImg: teacherImg4,
-    price: 70,
-  },
 ];
 
 const PopularCourse = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const cardsPerPage = 4;
   const totalItems = data.length;
 
-  // Ensure infinite looping by resetting after last set
   const handleNext = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + 1) % Math.ceil(totalItems / cardsPerPage)
-    );
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? Math.ceil(totalItems / cardsPerPage) - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalItems) % totalItems);
   };
 
-  // Slice data to show exactly 4 items per page
-  const visibleData = data.slice(
-    currentIndex * cardsPerPage,
-    (currentIndex + 1) * cardsPerPage
-  );
+  useEffect(() => {
+    const interval = setInterval(handleNext, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       <div className={styles.containers}>
-        <h1>Our popular courses</h1>
+        <h1>Our Popular Courses</h1>
         <div className={styles.btnFx}>
           <p className={styles.describes}>
             By taking proactive steps to nurture mental health, we can enhance
@@ -175,42 +141,71 @@ const PopularCourse = () => {
         </div>
       </div>
 
-      {/* data fetch */}
+      {/* Carousel display */}
       <div className={styles.mainData}>
         <div
-          className={styles.carousel}
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          className={styles.carouselWrapper}
+          style={{
+            overflow: "hidden",
+          }}
         >
-          {visibleData.map((item) => (
-            <div key={item.id} className={styles.card}>
-              <div className={styles.cardImage}>
-                <Image src={item.image} alt="course" />
+          <div
+            className={styles.carousel}
+            style={{
+              display: "flex",
+              transition: "transform 0.5s ease-in-out",
+              transform: `translateX(-${(currentIndex * 100) / totalItems}%)`,
+            }}
+          >
+            {data.map((item) => (
+              <div key={item.id} className={styles.card}>
+                <div className={styles.cardImage}>
+                  <Image src={item.image} alt="course" />
+                </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.btnType}>
+                    <div className={styles.cardType}>{item.type}</div>
+                    <div className={styles.cardHealth}>{item.health}</div>
+                  </div>
+                  <div className={styles.cardTitle}>{item.title}</div>
+                  <div className={styles.cardRating}>
+                    <RatingStars rating={item.rating} />
+                    <span>{item.rating}</span>
+                    <span>({item.reviewCount})</span>
+                  </div>
+                  <div className={styles.cardTime}>
+                    <div className={styles.timesIco}>
+                      <MdTimer className={styles.iconsSt} />
+                      <span className={styles.titless}>{item.time}</span>
+                    </div>
+                    <div className={styles.linesH}></div>
+                    <div className={styles.lessonsIcon}>
+                      <PiBookOpenTextBold className={styles.iconsSt} />
+                      <span className={styles.titless}>
+                        {item.lessons} lessons
+                      </span>
+                    </div>
+                  </div>
+                  <div className={styles.footerCrd}>
+                    <div className={styles.cardTeacher}>
+                      <Image src={item.teacherImg} alt="teacher" />
+                      <span className={styles.teName}>{item.teacher}</span>
+                    </div>
+                    <div className={styles.cardPrice}>
+                      {item.payment === "done" ? (
+                        <div className={styles.checkBox}>
+                          <MdCheckCircle className={styles.boxIcon} />
+                          <span className={styles.price}>Enrolled</span>
+                        </div>
+                      ) : (
+                        <span className={styles.prices}>${item.price}</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className={styles.cardBody}>
-                <div className={styles.btnType}>
-                  <div className={styles.cardType}>{item.type}</div>
-                  <div className={styles.cardHealth}>{item.health}</div>
-                </div>
-                <div className={styles.cardTitle}>{item.title}</div>
-                <div className={styles.cardRating}>
-                  <span>{item.rating}</span>
-                  <span>({item.reviewCount})</span>
-                </div>
-                <div className={styles.cardTime}>
-                  <span>{item.time}</span>
-                  <span>{item.lessons} lessons</span>
-                </div>
-                <div className={styles.cardTeacher}>
-                  <Image src={item.teacherImg} alt="teacher" />
-                  <span>{item.teacher}</span>
-                </div>
-                <div className={styles.cardPrice}>
-                  <span>${item.price}</span>
-                  {/* <button className={styles.cardButton}>Enroll</button> */}
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </>

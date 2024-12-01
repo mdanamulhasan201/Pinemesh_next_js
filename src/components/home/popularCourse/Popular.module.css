@@ -42,8 +42,9 @@
 }
 
 .mainData {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
+  padding: 0px 10px 50px 10px;
 }
 
 .carousel {
@@ -53,6 +54,7 @@
 }
 
 .card {
+  width: 400px;
   border-radius: 13px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #00000033;
@@ -75,12 +77,13 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
+
 .cardType {
   background-color: #ff97001a;
   padding: 5px 10px;
-  border: 1px solid #FF970080;
+  border: 1px solid #ff970080;
   border-radius: 5px;
   color: #000000;
   font-size: 13px;
@@ -89,33 +92,68 @@
 
 .cardBody {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .cardHealth {
-    background-color: #CDE53333;
-    padding: 5px 10px;
-    border: 1px solid #CDE533;
-    border-radius: 5px;
-    color: #000000;
-    font-size: 13px;
-    font-weight: 400;
+  background-color: #cde53333;
+  padding: 5px 10px;
+  border: 1px solid #cde533;
+  border-radius: 5px;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .cardTitle {
   font-size: 16px;
-  font-weight: 600;
-  margin: 10px 0;
+  font-weight: 500;
 }
 
 .cardRating {
   font-size: 14px;
   display: flex;
+  align-items: center;
   gap: 5px;
 }
 
 .cardTime {
-  font-size: 12px;
-  color: #bfbfbf;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #0000001a;
+  padding-bottom: 20px;
+}
+
+.timesIco {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.iconsSt {
+  color: #9998e1;
+  font-size: 20px;
+}
+
+.titless {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.linesH {
+  height: 15px;
+  width: 1px;
+  background-color: #00000033;
+}
+
+.lessonsIcon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .cardTeacher {
@@ -125,23 +163,59 @@
 }
 
 .cardTeacher img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
-.cardPrice {
+.teName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.checkBox {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background-color: #0000000d;
+  padding: 4px 5px;
+  border-radius: 5px;
+  border: 1px solid #00000033;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.boxIcon {
+  color: #00000099;
+  font-size: 13px;
+}
+
+.prices {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.footerCrd {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+}
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.cardButton {
-  background-color: #56ccf2;
-  padding: 5px 15px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
+.starFull {
+  color: #ff9700;
+}
+
+.starHalf {
+  color: #ff9700;
+}
+
+.starEmpty {
+  color: #ddd;
 }
