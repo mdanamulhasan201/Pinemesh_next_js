@@ -1,17 +1,12 @@
-import localFont from "next/font/local";
+import { Onest } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Shared/Footer";
 import Navbar from "@/components/Shared/Navbar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const onest = Onest({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -22,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={onest.className}>
         <Navbar />
         {children}
         <Footer />
