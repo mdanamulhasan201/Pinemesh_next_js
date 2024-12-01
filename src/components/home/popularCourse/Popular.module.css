@@ -1,0 +1,44 @@
+.containers {
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 4rem;
+}
+
+.btnFx{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+/* Container for arrow buttons */
+.arrowButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Style for arrow buttons */
+.arrowButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #287279;
+  color: white;
+  width: 50px; 
+  height: 50px; 
+  border-radius: 50%; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+/* Style for the arrow icon */
+.arrowIcon {
+  font-size: 1.5rem; 
+}
+
+/* Hover effect for buttons */
+.arrowButton:hover {
+  background-color: #1a5c56; 
+}

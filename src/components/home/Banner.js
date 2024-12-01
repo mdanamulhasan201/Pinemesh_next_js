@@ -5,17 +5,16 @@ import styles from "./Banner.module.css";
 import bannerImg from "../../../public/banner/banner.png";
 import Image from "next/image";
 import IconImg from "../../../public/banner/Vector.png";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"; // Import React Icons
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Button from "../button/Button";
 
 const Banner = () => {
-  // Dynamically passed values for rating and review count
-  const rating = 4.9; // Rating value, this can be dynamically passed
-  const reviewCount = 566; // Review count, this can be dynamically passed
+  const rating = 4.9;
+  const reviewCount = 566;
 
-  const totalStars = 5; // Maximum number of stars
-  const fullStars = Math.floor(rating); // Full stars (whole number part)
-  const halfStar = rating % 1 !== 0; // Whether there should be a half-star
+  const totalStars = 5;
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 !== 0;
 
   return (
     <div className={styles.bg}>
