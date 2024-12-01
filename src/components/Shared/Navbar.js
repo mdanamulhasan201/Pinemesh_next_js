@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { FaBars, FaTimes, FaAngleDown, FaAngleUp } from "react-icons/fa";
 import styles from "./Navbar.module.css";
+import cartImg from "../../../public/navbar/cart.png";
+import Image from "next/image";
+import Button from "../button/Button";
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -103,8 +106,11 @@ const Navbar = () => {
 
         {/* Right Side: Cart and Login */}
         <div className={`${styles.actions} ${styles.desktopOnly}`}>
-          <button className={styles.cart}>🛒</button>
-          <button className={styles.login}>Login</button>
+          <div className={styles.cart}>
+            <Image src={cartImg} alt="cart" />
+          </div>
+          {/* <button className={styles.login}>Login</button> */}
+          <Button>Login</Button>
         </div>
       </div>
 

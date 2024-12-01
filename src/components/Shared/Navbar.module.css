@@ -1,8 +1,10 @@
+/* General Background */
 .bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar Container */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -13,8 +15,10 @@
   margin: 0 auto;
   position: relative;
   flex-wrap: wrap;
+  font-size: 16px;
 }
 
+/* Logo */
 .logo {
   font-size: 1.5rem;
   z-index: 1000;
@@ -39,27 +43,32 @@
   background-color: transparent;
   border: none;
   display: flex;
+  font-size: 16px;
   align-items: center;
   gap: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 .navLinks a:hover,
 .navLinks .dropbtn:hover {
-  background-color: #555;
+  background-color: #287279;
+  color: white;
   border-radius: 5px;
 }
 
-/* Dropdown */
+/* Dropdown Container */
 .dropdown {
   position: relative;
 }
 
+/* Dropdown Content */
 .dropdownContent {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #444;
+  top: 50px;
+  background-color: #287279;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   min-width: 150px;
   border-radius: 5px;
@@ -74,6 +83,7 @@
   color: white;
   padding: 10px;
   text-decoration: none;
+  font-size: 15px;
   display: block;
 }
 
@@ -81,6 +91,7 @@
   background-color: #666;
 }
 
+/* Show Dropdown on Hover */
 .dropdown:hover .dropdownContent,
 .dropdownContent.show {
   display: block;
@@ -89,25 +100,31 @@
   transform: translateY(0);
 }
 
-/* Actions (Right Side) */
+/* Dropdown Icon */
+.icon {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate Icon When Open */
+.dropdown:hover .icon,
+.dropdownContent.show + .icon {
+  transform: rotate(180deg);
+}
+
+/* button (Right Side) */
 .actions {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 30px;
   margin-left: auto;
 }
 
-/* Login and Cart Buttons */
-.actions button {
-  background-color: #444;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.actions button:hover {
-  background-color: #555;
+.cart{
+  width: 28px;
+  height: 25px;
 }
 
 /* Mobile Menu Button */
@@ -115,7 +132,6 @@
   display: none;
   background-color: transparent;
   border: none;
-  color: white;
   font-size: 24px;
   cursor: pointer;
   position: absolute;
@@ -124,28 +140,39 @@
   transform: translateY(-50%);
   z-index: 1000;
   margin-right: 20px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.mobileMenuBtn.active {
+  color: #555;
 }
 
 /* Sidebar for Mobile */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: -100%;
+  width: 75%;
   height: 100%;
-  background-color: #333;
-  transition: left 0.3s ease-in-out;
+  background-color: #ffffff; 
+  transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 999;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1); 
 }
-
 .sidebar.showSidebar {
   left: 0;
+  opacity: 1;
 }
+
 .marinTop {
   margin-top: 60px;
 }
+
+/* Sidebar Content */
 .sidebarContent {
   display: flex;
   flex-direction: column;
@@ -153,9 +180,10 @@
   margin: 0;
 }
 
+/* Sidebar Links */
 .sidebarContent a,
 .mobileDropdownContent a {
-  color: white;
+  color: #333; 
   text-decoration: none;
   padding: 15px 20px;
   text-align: left;
@@ -168,26 +196,33 @@
 
 .sidebarContent a:hover,
 .mobileDropdownContent a:hover {
-  background-color: #555;
+  background-color: #f0f0f0; 
 }
 
+/* Mobile Dropdown Content */
 .mobileDropdownContent {
   display: none;
   flex-direction: column;
-  background-color: #333;
+  background-color: #ffffff; 
+  opacity: 0; 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: opacity 0.3s ease, max-height 0.3s ease; 
 }
 
 .mobileDropdownContent.show {
   display: flex;
+  opacity: 1; 
+  max-height: 500px;
 }
-
-/* Ensure dropdown buttons match other links */
+/* Mobile Dropdown Button */
 .mobileDropdown {
   padding: 0;
 }
 
+/* Mobile Dropdown Button */
 .mobileDropbtn {
-  color: white;
+  color: #333; 
   background-color: transparent;
   border: none;
   text-align: left;
@@ -200,9 +235,8 @@
 }
 
 .mobileDropbtn:hover {
-  background-color: #555;
+  background-color: #f0f0f0; 
 }
-
 /* Responsive Styles */
 @media (max-width: 768px) {
   .navLinks {
