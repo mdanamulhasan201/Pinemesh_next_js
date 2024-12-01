@@ -1,6 +1,7 @@
 "use client";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Importing the arrow icons
+
 import styles from "./Popular.module.css";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const PopularCourse = () => {
   return (
@@ -8,7 +9,7 @@ const PopularCourse = () => {
       <div className={styles.containers}>
         <h1>Our popular courses</h1>
         <div className={styles.btnFx}>
-          <p>
+          <p className={styles.describes}>
             By taking proactive steps to nurture mental health, we can enhance
             our quality of life, build resilience, and foster a sense of inner
             peace and balance
@@ -16,12 +17,12 @@ const PopularCourse = () => {
           <div className={styles.arrowButtons}>
             {/* Left arrow button */}
             <button className={styles.arrowButton}>
-              <FaArrowLeft className={styles.arrowIcon} />
+              <IoIosArrowBack className={styles.arrowIcon} />
             </button>
 
             {/* Right arrow button */}
             <button className={styles.arrowButton}>
-              <FaArrowRight className={styles.arrowIcon} />
+              <IoIosArrowForward className={styles.arrowIcon} />
             </button>
           </div>
         </div>

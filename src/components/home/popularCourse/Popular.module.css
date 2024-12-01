@@ -2,43 +2,46 @@
   max-width: 1200px;
   margin: 0 auto;
   gap: 4rem;
+  padding: 100px 10px;
 }
 
-.btnFx{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;    
+.btnFx {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
-
-/* Container for arrow buttons */
+.describes{
+    width: 60%;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000B2;
+}
 .arrowButtons {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
-/* Style for arrow buttons */
 .arrowButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #287279;
-  color: white;
-  width: 50px; 
-  height: 50px; 
-  border-radius: 50%; 
-  border: none; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
+  border: 1px solid #00000033;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: transparent;
 }
 
-/* Style for the arrow icon */
 .arrowIcon {
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
 }
 
-/* Hover effect for buttons */
 .arrowButton:hover {
-  background-color: #1a5c56; 
+    border: 1px solid #000000CC;
+    
 }
