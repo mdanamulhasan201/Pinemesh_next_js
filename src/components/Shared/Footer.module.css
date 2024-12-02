@@ -44,6 +44,41 @@
   color: #287279;
 }
 
+.mainSubFt{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.subFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 2px dashed  #00000033;
+    border-bottom: 2px dashed  #00000033;
+}
+.subFtTitle{
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+}
+.linkup{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.copyRight{
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.copyRight p{
+    font-size: 13px;
+    color: #00000080;
+    font-weight: 400;
+
+}
+
 /* Responsive design */
 @media (max-width: 1024px) {
   .section {
