@@ -17,7 +17,7 @@ import teacherImg2 from "../../../../public/popular_course/teacher/image_2.png";
 import teacherImg3 from "../../../../public/popular_course/teacher/image_3.png";
 import teacherImg4 from "../../../../public/popular_course/teacher/image_4.png";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { MdCheckCircle, MdTimer } from "react-icons/md";
 import { PiBookOpenTextBold } from "react-icons/pi";
 
@@ -105,62 +105,6 @@ const data = [
     teacherImg: teacherImg4,
     price: 100,
   },
-  {
-    id: 5,
-    image: bannerImg4,
-    type: "Beginner",
-    health: "Nutrition and Diet",
-    title: "Introduction to Healthy Diet and Nutrition",
-    rating: 3.9,
-    reviewCount: 566,
-    time: "6h 34m",
-    lessons: 3,
-    teacher: "Kate Winslate",
-    teacherImg: teacherImg4,
-    price: 100,
-  },
-  {
-    id: 6,
-    image: bannerImg4,
-    type: "Beginner",
-    health: "Nutrition and Diet",
-    title: "Introduction to Healthy Diet and Nutrition",
-    rating: 3.9,
-    reviewCount: 566,
-    time: "6h 34m",
-    lessons: 3,
-    teacher: "Kate Winslate",
-    teacherImg: teacherImg4,
-    price: 100,
-  },
-  {
-    id: 7,
-    image: bannerImg4,
-    type: "Beginner",
-    health: "Nutrition and Diet",
-    title: "Introduction to Healthy Diet and Nutrition",
-    rating: 3.9,
-    reviewCount: 566,
-    time: "6h 34m",
-    lessons: 3,
-    teacher: "Kate Winslate",
-    teacherImg: teacherImg4,
-    price: 100,
-  },
-  {
-    id: 8,
-    image: bannerImg4,
-    type: "Beginner",
-    health: "Nutrition and Diet",
-    title: "Introduction to Healthy Diet and Nutrition",
-    rating: 3.9,
-    reviewCount: 566,
-    time: "6h 34m",
-    lessons: 3,
-    teacher: "Kate Winslate",
-    teacherImg: teacherImg4,
-    price: 100,
-  },
 ];
 
 const PopularCourse = () => {
@@ -183,35 +127,36 @@ const PopularCourse = () => {
 
   const totalItems = data.length;
 
-  // Auto move the carousel
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 1 >= totalItems ? 0 : prevIndex + 1
+    );
+  }, [totalItems]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? totalItems - 1 : prevIndex - 1
+    );
+  }, [totalItems]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
     }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + 1 >= totalItems ? 0 : prevIndex + 1
-    );
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? totalItems - 1 : prevIndex - 1
-    );
-  };
+  }, [handleNext]);
 
   const handleAddToCart = (id) => {
     console.log("Add to cart", id);
     alert("Added to cart", id);
   };
+
   const handleAddFvt = (id) => {
     console.log("Add to favorite", id);
     alert("Added to favorite", id);
   };
+
   return (
     <>
       <div className={styles.containers}>
@@ -253,7 +198,6 @@ const PopularCourse = () => {
                   </div>
                 </div>
               </div>
-
               <div className={styles.cardBody}>
                 <div className={styles.btnType}>
                   <div className={styles.cardType}>{item.type}</div>

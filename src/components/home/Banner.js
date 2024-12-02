@@ -49,9 +49,10 @@ const Banner = () => {
             We’re restoring home as the primary place of personal well-being
           </p>
           <p className={styles.descriptionP}>
-            Health is not just about what you're eating. It's also about what
-            you're thinking and saying
+            Health is not just about what you&apos;re eating. It&apos;s also
+            about what you&apos;re thinking and saying
           </p>
+
           <div className={styles.buttons}>
             <Button> Browse Courses</Button>
             <button className={styles.getStarted}>Get Started</button>

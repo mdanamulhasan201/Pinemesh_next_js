@@ -107,7 +107,7 @@ const CustomerReview = () => {
               </div>
               <h4>{item.name}</h4>
               <div className={styles.reviewContent}>
-                <p>"{item.review}"</p>
+              <p>&quot;{item.review}&quot;</p>
               </div>
             </div>
           ))}
