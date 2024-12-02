@@ -1,8 +1,13 @@
 "use client";
 
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { BsCart2 } from "react-icons/bs";
 import styles from "./Popular.module.css";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import {
+  IoIosArrowForward,
+  IoIosArrowBack,
+  IoMdHeartEmpty,
+} from "react-icons/io";
 import bannerImg1 from "../../../../public/popular_course/image_1.png";
 import bannerImg2 from "../../../../public/popular_course/image_2.png";
 import bannerImg3 from "../../../../public/popular_course/image_3.png";
@@ -198,6 +203,15 @@ const PopularCourse = () => {
       prevIndex === 0 ? totalItems - 1 : prevIndex - 1
     );
   };
+
+  const handleAddToCart = (id) => {
+    console.log("Add to cart", id);
+    alert("Added to cart", id);
+  };
+  const handleAddFvt = (id) => {
+    console.log("Add to favorite", id);
+    alert("Added to favorite", id);
+  };
   return (
     <>
       <div className={styles.containers}>
@@ -230,7 +244,16 @@ const PopularCourse = () => {
             <div key={item.id} className={styles.card}>
               <div className={styles.cardImage}>
                 <Image src={item.image} alt="course" />
+                <div className={styles.cardIcons}>
+                  <div className={styles.cardIcon}>
+                    <BsCart2 onClick={() => handleAddToCart(item.id)} />
+                  </div>
+                  <div className={styles.cardIcon}>
+                    <IoMdHeartEmpty onClick={() => handleAddFvt(item.id)} />
+                  </div>
+                </div>
               </div>
+
               <div className={styles.cardBody}>
                 <div className={styles.btnType}>
                   <div className={styles.cardType}>{item.type}</div>
