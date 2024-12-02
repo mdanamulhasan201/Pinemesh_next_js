@@ -286,7 +286,7 @@
 /* For Monitor Screens */
 @media (min-width: 1024px) {
   .carouselWrapper {
-    width: 1540px;
+    width: 81%;
     margin-right: 0;
   }
 

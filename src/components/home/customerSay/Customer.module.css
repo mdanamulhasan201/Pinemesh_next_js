@@ -1,26 +1,41 @@
 .mainContents {
   padding: 20px;
   text-align: center;
+  overflow: hidden;
+  position: relative;
 }
 
-.cardFx {
-  display: flex;
-  justify-content: space-between;
-  gap: 5px;
-}
 .titles {
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 16px;
+  width: 35%;
+  margin: auto;
+  padding-bottom: 50px;
 }
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.cardFx {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+  will-change: transform;
+}
+
 .reviewCard {
-  background-color: #9998E133;
-  border: 1px solid #9998E180;
+  flex: 0 0 calc(100% / 1); 
+  background-color: #9998e133;
+  border: 1px solid #9998e180;
   border-radius: 8px;
   padding: 16px;
-  margin-bottom: 16px;
+  margin: 0 8px;
   text-align: left;
-  width: 50%;
+  box-sizing: border-box;
 }
 
 .reviewImg {
@@ -28,10 +43,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-}
-
-.reviewImg img {
-  border-radius: 50%;
 }
 
 .reviewContent {
@@ -44,4 +55,50 @@
   margin: 8px 0;
   font-size: 16px;
   font-weight: 600;
+}
+
+/* Dots Navigation */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 60px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.activeDot {
+  background-color: #9998e1;
+}
+
+/* Responsive */
+@media (max-width: 768px) { 
+  .reviewCard {
+    flex: 0 0 calc(100% / 2); 
+    
+  }
+  .titles {
+    font-size: 20px;
+    width: 100%;
+  
+  }
+}
+
+@media (max-width: 480px) { 
+  .reviewCard {
+    flex: 0 0 calc(100% / 1); 
+  }
+}
+
+@media (min-width: 1024px) { 
+  .reviewCard {
+    flex: 0 0 calc(100% / 6); 
+  }
 }
