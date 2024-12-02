@@ -39,7 +39,7 @@ const data = [
 ];
 
 const WeProvide = () => {
-    const [activeId, setActiveId] = useState(3); 
+  const [activeId, setActiveId] = useState(3);
 
   const handleClick = (id) => {
     setActiveId((prev) => (prev === id ? null : id));
@@ -65,6 +65,7 @@ const WeProvide = () => {
             >
               {item.icon}
             </div>
+
             <div>
               <p className={styles.text}>{item.text}</p>
               {activeId === item.id && (
@@ -76,7 +77,9 @@ const WeProvide = () => {
           </div>
         ))}
         <div>
-          <button className={styles.getStarted}>Learn More About Our Services</button>
+          <button className={styles.getStarted}>
+            Learn More About Our Services
+          </button>
         </div>
       </div>
 

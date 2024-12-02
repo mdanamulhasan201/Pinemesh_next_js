@@ -1,0 +1,47 @@
+.mainContents {
+  padding: 20px;
+  text-align: center;
+}
+
+.cardFx {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+.titles {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.reviewCard {
+  background-color: #9998E133;
+  border: 1px solid #9998E180;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: left;
+  width: 50%;
+}
+
+.reviewImg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.reviewImg img {
+  border-radius: 50%;
+}
+
+.reviewContent {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.reviewCard h4 {
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+}

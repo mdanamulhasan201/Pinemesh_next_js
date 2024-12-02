@@ -1,6 +1,8 @@
 .containers {
   max-width: 1200px;
-  margin: 0 auto;
+  justify-content: end;
+  margin: auto;
+  align-items: end;
   gap: 4rem;
   padding: 100px 10px;
 }
@@ -37,12 +39,16 @@
   cursor: pointer;
 }
 
+.arrowButton:hover {
+  border: 1px solid #000000cc;
+}
+
 .arrowIcon {
   font-size: 18px;
 }
 
 .mainData {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: auto;
   padding: 0px 10px 50px 10px;
 }
@@ -52,9 +58,14 @@
   gap: 20px;
   transition: all 0.5s ease-in-out;
 }
+.carouselWrapper {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+}
 
 .card {
-  width: 400px;
+  flex-shrink: 0;
   border-radius: 13px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #00000033;
@@ -217,4 +228,52 @@
 
 .starEmpty {
   color: #ddd;
+}
+/* For Monitor Screens */
+@media (min-width: 1024px) {
+  .carouselWrapper {
+    width: 1530px;
+    margin-right: 0;
+  }
+
+  .card {
+    width: 25%;
+  }
+}
+
+/* For Tablet Screens */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .carouselWrapper {
+    width: 90%;
+    margin: 0;
+  }
+
+  .card {
+    width: 40%;
+  }
+}
+
+/* For Mobile Screens */
+@media (max-width: 767px) {
+  .carouselWrapper {
+    width: 100%;
+    margin: 0;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .arrowButtons {
+    gap: 0.5rem;
+  }
+
+  .arrowButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrowIcon {
+    font-size: 16px;
+  }
 }

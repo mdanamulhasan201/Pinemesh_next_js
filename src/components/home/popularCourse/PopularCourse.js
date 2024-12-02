@@ -100,25 +100,104 @@ const data = [
     teacherImg: teacherImg4,
     price: 100,
   },
+  {
+    id: 5,
+    image: bannerImg4,
+    type: "Beginner",
+    health: "Nutrition and Diet",
+    title: "Introduction to Healthy Diet and Nutrition",
+    rating: 3.9,
+    reviewCount: 566,
+    time: "6h 34m",
+    lessons: 3,
+    teacher: "Kate Winslate",
+    teacherImg: teacherImg4,
+    price: 100,
+  },
+  {
+    id: 6,
+    image: bannerImg4,
+    type: "Beginner",
+    health: "Nutrition and Diet",
+    title: "Introduction to Healthy Diet and Nutrition",
+    rating: 3.9,
+    reviewCount: 566,
+    time: "6h 34m",
+    lessons: 3,
+    teacher: "Kate Winslate",
+    teacherImg: teacherImg4,
+    price: 100,
+  },
+  {
+    id: 7,
+    image: bannerImg4,
+    type: "Beginner",
+    health: "Nutrition and Diet",
+    title: "Introduction to Healthy Diet and Nutrition",
+    rating: 3.9,
+    reviewCount: 566,
+    time: "6h 34m",
+    lessons: 3,
+    teacher: "Kate Winslate",
+    teacherImg: teacherImg4,
+    price: 100,
+  },
+  {
+    id: 8,
+    image: bannerImg4,
+    type: "Beginner",
+    health: "Nutrition and Diet",
+    title: "Introduction to Healthy Diet and Nutrition",
+    rating: 3.9,
+    reviewCount: 566,
+    time: "6h 34m",
+    lessons: 3,
+    teacher: "Kate Winslate",
+    teacherImg: teacherImg4,
+    price: 100,
+  },
 ];
 
 const PopularCourse = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalItems = data.length;
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalItems) % totalItems);
-  };
+  const [itemsPerSlide, setItemsPerSlide] = useState(4);
 
   useEffect(() => {
-    const interval = setInterval(handleNext, 5000);
+    const updateItemsPerSlide = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) setItemsPerSlide(4);
+      else if (width >= 768) setItemsPerSlide(3);
+      else setItemsPerSlide(1);
+    };
+
+    updateItemsPerSlide();
+    window.addEventListener("resize", updateItemsPerSlide);
+
+    return () => window.removeEventListener("resize", updateItemsPerSlide);
+  }, []);
+
+  const totalItems = data.length;
+
+  // Auto move the carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 10000);
+
     return () => clearInterval(interval);
   }, []);
 
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + 1 >= totalItems ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? totalItems - 1 : prevIndex - 1
+    );
+  };
   return (
     <>
       <div className={styles.containers}>
@@ -133,79 +212,66 @@ const PopularCourse = () => {
             <button className={styles.arrowButton} onClick={handlePrev}>
               <IoIosArrowBack className={styles.arrowIcon} />
             </button>
-
             <button className={styles.arrowButton} onClick={handleNext}>
               <IoIosArrowForward className={styles.arrowIcon} />
             </button>
           </div>
         </div>
       </div>
-
-      {/* Carousel display */}
-      <div className={styles.mainData}>
+      <div className={styles.carouselWrapper}>
         <div
-          className={styles.carouselWrapper}
+          className={styles.carousel}
           style={{
-            overflow: "hidden",
+            transform: `translateX(-${(currentIndex / itemsPerSlide) * 100}%)`,
+            transition: "transform 0.5s ease-in-out",
           }}
         >
-          <div
-            className={styles.carousel}
-            style={{
-              display: "flex",
-              transition: "transform 0.5s ease-in-out",
-              transform: `translateX(-${(currentIndex * 100) / totalItems}%)`,
-            }}
-          >
-            {data.map((item) => (
-              <div key={item.id} className={styles.card}>
-                <div className={styles.cardImage}>
-                  <Image src={item.image} alt="course" />
+          {data.map((item) => (
+            <div key={item.id} className={styles.card}>
+              <div className={styles.cardImage}>
+                <Image src={item.image} alt="course" />
+              </div>
+              <div className={styles.cardBody}>
+                <div className={styles.btnType}>
+                  <div className={styles.cardType}>{item.type}</div>
+                  <div className={styles.cardHealth}>{item.health}</div>
                 </div>
-                <div className={styles.cardBody}>
-                  <div className={styles.btnType}>
-                    <div className={styles.cardType}>{item.type}</div>
-                    <div className={styles.cardHealth}>{item.health}</div>
+                <div className={styles.cardTitle}>{item.title}</div>
+                <div className={styles.cardRating}>
+                  <RatingStars rating={item.rating} />
+                  <span>{item.rating}</span>
+                  <span>({item.reviewCount})</span>
+                </div>
+                <div className={styles.cardTime}>
+                  <div className={styles.timesIco}>
+                    <MdTimer className={styles.iconsSt} />
+                    <span className={styles.titless}>{item.time}</span>
                   </div>
-                  <div className={styles.cardTitle}>{item.title}</div>
-                  <div className={styles.cardRating}>
-                    <RatingStars rating={item.rating} />
-                    <span>{item.rating}</span>
-                    <span>({item.reviewCount})</span>
+                  <div className={styles.linesH}></div>
+                  <div className={styles.lessonsIcon}>
+                    <PiBookOpenTextBold className={styles.iconsSt} />
+                    <span className={styles.titless}>
+                      {item.lessons} lessons
+                    </span>
                   </div>
-                  <div className={styles.cardTime}>
-                    <div className={styles.timesIco}>
-                      <MdTimer className={styles.iconsSt} />
-                      <span className={styles.titless}>{item.time}</span>
-                    </div>
-                    <div className={styles.linesH}></div>
-                    <div className={styles.lessonsIcon}>
-                      <PiBookOpenTextBold className={styles.iconsSt} />
-                      <span className={styles.titless}>
-                        {item.lessons} lessons
-                      </span>
-                    </div>
+                </div>
+                <div className={styles.footerCrd}>
+                  <div className={styles.cardTeacher}>
+                    <Image src={item.teacherImg} alt="teacher" />
+                    <span className={styles.teName}>{item.teacher}</span>
                   </div>
-                  <div className={styles.footerCrd}>
-                    <div className={styles.cardTeacher}>
-                      <Image src={item.teacherImg} alt="teacher" />
-                      <span className={styles.teName}>{item.teacher}</span>
-                    </div>
-                    <div className={styles.cardPrice}>
-                      {item.payment === "done" ? (
-                        <div className={styles.checkBox}>
-                          <MdCheckCircle className={styles.boxIcon} />
-                          <span className={styles.price}>Enrolled</span>
-                        </div>
-                      ) : (
-                        <span className={styles.prices}>${item.price}</span>
-                      )}
-                    </div>
+                  <div className={styles.cardPrice}>
+                    <span>{item.price}$</span>
                   </div>
+                  {item.payment === "done" && (
+                    <div className={styles.paymentDone}>
+                      <MdCheckCircle />
+                    </div>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </>
