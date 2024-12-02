@@ -81,10 +81,10 @@ const Footer = () => {
           <h1 className={styles.subFtTitle}>Join our official channels</h1>
           <div className={styles.linkup}>
             <Link href="/">
-              <Image src={instagram} alt="instagram" width={32} height={32} />
+              <Image src={instagram} alt="instagram" width={30} height={30} />
             </Link>
             <Link href="/">
-              <Image src={twitter} alt="twitter" width={24} height={24} />
+              <Image src={twitter} alt="twitter" width={22} height={22} />
             </Link>
             <Link href="/">
               <Image src={facebook} alt="facebook" width={26} height={26} />
@@ -96,7 +96,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyRight}>
-        <p>© 2024 EduPath. All rights reserved</p>
+        <p>© {new Date().getFullYear()} EduPath. All rights reserved</p>
       </div>
     </div>
   );
