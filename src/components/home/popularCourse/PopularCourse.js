@@ -227,14 +227,25 @@ const PopularCourse = () => {
                     <Image src={item.teacherImg} alt="teacher" />
                     <span className={styles.teName}>{item.teacher}</span>
                   </div>
-                  <div className={styles.cardPrice}>
+
+                  {item.payment ? (
+                    <div className={styles.paymentDone}>
+                      <MdCheckCircle className={styles.iconss}/>
+                      <p>Enrolled</p>
+                    </div>
+                  ) : (
+                    <div className={styles.cardPrice}>
+                      <span>{item.price}$</span>
+                    </div>
+                  )}
+                  {/* <div className={styles.cardPrice}>
                     <span>{item.price}$</span>
                   </div>
                   {item.payment === "done" && (
                     <div className={styles.paymentDone}>
                       <MdCheckCircle />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
